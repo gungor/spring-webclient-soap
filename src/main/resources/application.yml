@@ -1,0 +1,11 @@
+soap:
+  service:
+    url: http://localhost:8081/ws
+
+logging:
+  level:
+    reactor:
+      netty:
+        http:
+          client:
+            HttpClient: INFO
