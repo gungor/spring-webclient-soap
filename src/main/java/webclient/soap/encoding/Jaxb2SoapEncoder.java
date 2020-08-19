@@ -76,6 +76,7 @@ public class Jaxb2SoapEncoder implements Encoder<Object> {
                 Class<?> clazz = ClassUtils.getUserClass(value);
                 Marshaller marshaller = initMarshaller(clazz);
 
+                // here should be optimized
                 DefaultStrategiesHelper helper = new DefaultStrategiesHelper(WebServiceTemplate.class);
                 WebServiceMessageFactory messageFactory = helper.getDefaultStrategy(WebServiceMessageFactory.class);
                 WebServiceMessage message = messageFactory.createWebServiceMessage();
