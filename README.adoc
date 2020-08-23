@@ -1,3 +1,5 @@
+:toc:
+:icons: font
 :source-highlighter: prettify
 
 This guide helps you run Spring WebFlux example to call SOAP services.
