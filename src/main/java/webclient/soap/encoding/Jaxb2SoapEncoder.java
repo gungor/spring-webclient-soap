@@ -9,7 +9,6 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.core.io.buffer.PooledDataBuffer;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.MimeType;
 import org.springframework.util.MimeTypeUtils;
@@ -17,7 +16,6 @@ import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.WebServiceMessageFactory;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.support.DefaultStrategiesHelper;
-import org.springframework.ws.support.MarshallingUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -39,8 +39,6 @@ public class Config{
                 });
 
         ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder().codecs( clientCodecConfigurer -> {
-            //clientCodecConfigurer.registerDefaults(false);
-            //clientCodecConfigurer.customCodecs().decoder(new Jaxb2XmlDecoder());
             clientCodecConfigurer.customCodecs().encoder(new Jaxb2SoapEncoder());
         }).build();
 
