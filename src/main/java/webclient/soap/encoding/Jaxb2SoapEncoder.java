@@ -30,12 +30,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 public class Jaxb2SoapEncoder implements Encoder<Object> {
 
-    private final ConcurrentMap<Class<?>, JAXBContext> jaxbContexts = new ConcurrentHashMap<>(64);
+    private final JaxbContextContainer jaxbContexts = new JaxbContextContainer();
 
     @Override
     public boolean canEncode(ResolvableType elementType, MimeType mimeType) {
@@ -102,8 +100,7 @@ public class Jaxb2SoapEncoder implements Encoder<Object> {
 
 
     private Marshaller initMarshaller(Class<?> clazz) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
-        Marshaller marshaller = jaxbContext.createMarshaller();
+        Marshaller marshaller = this.jaxbContexts.createMarshaller(clazz);
         marshaller.setProperty(Marshaller.JAXB_ENCODING, StandardCharsets.UTF_8.name());
         return marshaller;
     }
