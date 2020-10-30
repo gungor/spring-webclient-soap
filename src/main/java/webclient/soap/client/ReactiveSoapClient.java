@@ -53,6 +53,10 @@ public class ReactiveSoapClient {
                 .doOnError(ResponseStatusException.class, error -> {
                     System.out.println( "error : "+ error );
                 })
+                .doOnError(Exception.class, ( Exception error ) -> {
+                    System.out.println( "error : "+ error );
+                    error.printStackTrace();
+                })
                 .subscribe();
 
     }

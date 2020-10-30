@@ -19,7 +19,6 @@ import org.springframework.ws.support.DefaultStrategiesHelper;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.MarshalException;
 import javax.xml.bind.Marshaller;

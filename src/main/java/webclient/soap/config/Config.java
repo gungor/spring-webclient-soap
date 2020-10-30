@@ -20,6 +20,7 @@ import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.tcp.TcpClient;
+import webclient.soap.encoding.Jaxb2SoapDecoder;
 import webclient.soap.encoding.Jaxb2SoapEncoder;
 
 import java.util.concurrent.TimeUnit;
@@ -39,7 +40,8 @@ public class Config{
                 });
 
         ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder().codecs( clientCodecConfigurer -> {
-            clientCodecConfigurer.customCodecs().encoder(new Jaxb2SoapEncoder());
+            clientCodecConfigurer.customCodecs().register(new Jaxb2SoapEncoder());
+            clientCodecConfigurer.customCodecs().register(new Jaxb2SoapDecoder());
         }).build();
 
         WebClient webClient = WebClient.builder()
