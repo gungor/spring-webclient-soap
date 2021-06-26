@@ -8,6 +8,8 @@ This guide helps you run Spring WebFlux example to call SOAP services.
 ====
 [source,bash]
 ----
+Use Java 1.8 for build and run
+
 git clone https://github.com/spring-guides/gs-soap-service.git
 cd gs-soap-service/complete
 mvn clean install
