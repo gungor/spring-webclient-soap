@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
+import webclient.soap.request.SoapEnvelopeRequest;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.SOAPException;
@@ -26,12 +27,14 @@ public class ReactiveSoapClient {
         this.soapServiceUrl = soapServiceUrl;
     }
 
-    public void call(GetCountryRequest getCountryRequest) throws SOAPException, ParserConfigurationException, IOException {
+    public void call(GetCountryRequest getCountryRequest, String soapHeaderContent) throws SOAPException, ParserConfigurationException, IOException {
+
+        SoapEnvelopeRequest soapEnvelopeRequest = new SoapEnvelopeRequest(soapHeaderContent, getCountryRequest);
 
         webClient.post()
                 .uri( soapServiceUrl )
                 .contentType(MediaType.TEXT_XML)
-                .body( Mono.just(getCountryRequest) , GetCountryRequest.class  )
+                .body( Mono.just(soapEnvelopeRequest) , SoapEnvelopeRequest.class  )
                 .retrieve()
                 .onStatus(
                         HttpStatus::isError,

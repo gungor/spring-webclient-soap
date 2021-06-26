@@ -22,6 +22,17 @@ public class Controller {
         System.out.println("country : "+ country);
         GetCountryRequest request = new GetCountryRequest();
         request.setName(country);
-        reactiveSoapClient.call( request );
+        reactiveSoapClient.call( request, null );
+    }
+
+    @PostMapping(value = "/countrydetailsWithHeader/{country}")
+    public void callSoapWithHeader(@PathVariable String country) throws SOAPException, ParserConfigurationException, IOException {
+        System.out.println("country : "+ country);
+        GetCountryRequest request = new GetCountryRequest();
+        request.setName(country);
+
+        String headerContent = "<aut:usernamePassword xmlns:aut=\"Authentication\" aut:user=\"test\" aut:password=\"pw\" />";
+
+        reactiveSoapClient.call( request, headerContent );
     }
 }
