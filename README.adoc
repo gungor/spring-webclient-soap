@@ -42,7 +42,7 @@ curl -X POST http://localhost:8080/countrydetails/Spain
 curl -X POST http://localhost:8080/countrydetailsWithHeader/Poland
 curl -X POST http://localhost:8080/countrydetailsWithHeader/Spain
 
-You can track the log to see whether soap header prepared and sent correctly to WS. A requets example is as below:
+You can track the log to see whether soap header prepared and sent correctly to WS. A request example is as below:
 
 |00000000| 3c 53 4f 41 50 2d 45 4e 56 3a 45 6e 76 65 6c 6f |<SOAP-ENV:Envelo|
 |00000010| 70 65 20 78 6d 6c 6e 73 3a 53 4f 41 50 2d 45 4e |pe xmlns:SOAP-EN|
